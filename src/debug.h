@@ -48,14 +48,14 @@
 #ifdef NDEBUG
 #define debug_warn(X)
 #elif defined DEBUG_PRINT_FILENAME
-#define debug_warn(X) if (!(X)) {\
+#define debug_warn(X) if ((X)) {\
 	Serial.print(F("[WARN] "));\
 	Serial.print(F(__FILE__":"));\
 	Serial.print(__LINE__);\
 	Serial.println(F(": "#X));\
 	}
 #else
-#define debug_warn(X) if (!(X)) {\
+#define debug_warn(X) if ((X)) {\
 	Serial.print(F("[WARN] "));\
 	Serial.print(__LINE__);\
 	Serial.println(F(": "#X));\
