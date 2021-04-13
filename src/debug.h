@@ -22,4 +22,11 @@
 #include <Arduino.h>
 
 
+#ifdef NDEBUG
+#define debug_bin_info()
+#else
+#define debug_bin_info() Serial.println(F(\
+	__FILE__": "__DATE__" - "__TIME__));
+#endif
+
 #endif /* _JACOBKOZIEJ_DEBUG */
