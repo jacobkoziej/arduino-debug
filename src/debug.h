@@ -39,6 +39,17 @@
 #endif
 
 #ifdef NDEBUG
+#define debug_warn(X)
+#else
+#define debug_warn(X) if (!(X)) {\
+	Serial.print(F("[WARN] "));\
+	Serial.print(F(__FILE__":"));\
+	Serial.print(__LINE__);\
+	Serial.println(F(": "#X));\
+	}
+#endif
+
+#ifdef NDEBUG
 #define debug_assert(X)
 #else
 #define debug_assert(X) if (!(X)) {\
