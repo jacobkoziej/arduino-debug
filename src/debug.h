@@ -33,14 +33,14 @@
 #endif
 
 #ifdef NDEBUG
-#define debug_value(X, ...)
+#define debug_val(X, ...)
 #elif defined DEBUG_PRINT_FILENAME
-#define debug_value(X, ...) Serial.print(F("[VALUE] "));\
+#define debug_val(X, ...) Serial.print(F("[VAL] "));\
 	Serial.print(F(__FILE__":"));\
 	Serial.print(__LINE__);\
 	Serial.print(F(": "#X" == ")); Serial.println((X), ##__VA_ARGS__);
 #else
-#define debug_value(X, ...) Serial.print(F("[VALUE] "));\
+#define debug_val(X, ...) Serial.print(F("[VAL] "));\
 	Serial.print(__LINE__);\
 	Serial.print(F(": "#X" == ")); Serial.println((X), ##__VA_ARGS__);
 #endif
