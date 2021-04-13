@@ -25,14 +25,15 @@
 #ifdef NDEBUG
 #define debug_bin_info()
 #else
-#define debug_bin_info() Serial.println(F(\
-	__FILE__": "__DATE__" - "__TIME__));
+#define debug_bin_info() Serial.print(F("[BIN INFO] "));\
+	Serial.println(F(__FILE__": "__DATE__" - "__TIME__));
 #endif
 
 #ifdef NDEBUG
 #define debug_value(X, ...)
 #else
-#define debug_value(X, ...) Serial.print(F(__FILE__":"));\
+#define debug_value(X, ...) Serial.print(F("[VALUE] "));\
+	Serial.print(F(__FILE__":"));\
 	Serial.print(__LINE__);\
 	Serial.print(F(": "#X" == ")); Serial.println((X), ##__VA_ARGS__);
 #endif
