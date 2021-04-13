@@ -24,26 +24,39 @@
 
 #ifdef NDEBUG
 #define debug_bin_info()
-#else
+#elif defined DEBUG_PRINT_FILENAME
 #define debug_bin_info() Serial.print(F("[BIN INFO] "));\
 	Serial.println(F(__FILE__": "__DATE__" - "__TIME__));
+#else
+#define debug_bin_info() Serial.print(F("[BIN INFO] "));\
+	Serial.println(F(__DATE__" - "__TIME__));
 #endif
 
 #ifdef NDEBUG
 #define debug_value(X, ...)
-#else
+#elif defined DEBUG_PRINT_FILENAME
 #define debug_value(X, ...) Serial.print(F("[VALUE] "));\
 	Serial.print(F(__FILE__":"));\
+	Serial.print(__LINE__);\
+	Serial.print(F(": "#X" == ")); Serial.println((X), ##__VA_ARGS__);
+#else
+#define debug_value(X, ...) Serial.print(F("[VALUE] "));\
 	Serial.print(__LINE__);\
 	Serial.print(F(": "#X" == ")); Serial.println((X), ##__VA_ARGS__);
 #endif
 
 #ifdef NDEBUG
 #define debug_warn(X)
-#else
+#elif defined DEBUG_PRINT_FILENAME
 #define debug_warn(X) if (!(X)) {\
 	Serial.print(F("[WARN] "));\
 	Serial.print(F(__FILE__":"));\
+	Serial.print(__LINE__);\
+	Serial.println(F(": "#X));\
+	}
+#else
+#define debug_warn(X) if (!(X)) {\
+	Serial.print(F("[WARN] "));\
 	Serial.print(__LINE__);\
 	Serial.println(F(": "#X));\
 	}
@@ -51,6 +64,12 @@
 
 #ifdef NDEBUG
 #define debug_assert(X)
+#elif defined DEBUG_PRINT_FILENAME
+#define debug_assert(X) if (!(X)) {\
+	Serial.print(F("Assertion failed: ("#X"), file: "__FILE__", line: "));\
+	Serial.println(__LINE__);\
+	while (1);\
+	}
 #else
 #define debug_assert(X) if (!(X)) {\
 	Serial.print(F("Assertion failed: ("#X"), line: "));\
