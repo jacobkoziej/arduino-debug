@@ -32,7 +32,8 @@
 #ifdef NDEBUG
 #define debug_value(X, ...)
 #else
-#define debug_value(X, ...) Serial.print(__LINE__);\
+#define debug_value(X, ...) Serial.print(F(__FILE__":"));\
+	Serial.print(__LINE__);\
 	Serial.print(F(": "#X" == ")); Serial.println((X), ##__VA_ARGS__);
 #endif
 
