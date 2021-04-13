@@ -36,4 +36,14 @@
 	Serial.print(F(": "#X" == ")); Serial.println((X), ##__VA_ARGS__);
 #endif
 
+#ifdef NDEBUG
+#define debug_assert(X)
+#else
+#define debug_assert(X) if (!(X)) {\
+	Serial.print(F("Assertion failed: ("#X"), line: "));\
+	Serial.println(__LINE__);\
+	while (1);\
+	}
+#endif
+
 #endif /* _JACOBKOZIEJ_DEBUG */
