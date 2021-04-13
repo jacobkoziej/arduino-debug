@@ -1,0 +1,10 @@
+# MACROS
+debug_bin_info	KEYWORD2
+debug_val	KEYWORD2
+debug_warn	KEYWORD2
+debug_msg	KEYWORD2
+debug_assert	KEYWORD2
+
+# DEFINES
+DEBUG_PRINT_FILE	KEYWORD3
+NDEBUG	KEYWORD3
