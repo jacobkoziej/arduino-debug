@@ -29,4 +29,11 @@
 	__FILE__": "__DATE__" - "__TIME__));
 #endif
 
+#ifdef NDEBUG
+#define debug_value(X, ...)
+#else
+#define debug_value(X, ...) Serial.print(__LINE__);\
+	Serial.print(F(": "#X" == ")); Serial.println((X), ##__VA_ARGS__);
+#endif
+
 #endif /* _JACOBKOZIEJ_DEBUG */
