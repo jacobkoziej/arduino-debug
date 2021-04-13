@@ -85,14 +85,17 @@
 #define debug_assert(X)
 #elif defined DEBUG_PRINT_FILE
 #define debug_assert(X) if (!(X)) {\
-	Serial.print(F("Assertion failed: ("#X"), file: "__FILE__", line: "));\
-	Serial.println(__LINE__);\
+	Serial.print(F("[ASSERT FAILED] "));\
+	Serial.print(F(__FILE__":"));\
+	Serial.print(__LINE__);\
+	Serial.print(F(": "#X));\
 	while (1);\
 	}
 #else
 #define debug_assert(X) if (!(X)) {\
-	Serial.print(F("Assertion failed: ("#X"), line: "));\
-	Serial.println(__LINE__);\
+	Serial.print(F("[ASSERT FAILED] "));\
+	Serial.print(__LINE__);\
+	Serial.print(F(": "#X));\
 	while (1);\
 	}
 #endif
