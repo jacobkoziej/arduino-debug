@@ -19,7 +19,7 @@ debugging?
 
 > Program:
 
-```arduino
+```cpp
 #include <debug.h>
 
 
@@ -92,7 +92,7 @@ directly to the [`F()`] macro.
 
 > For example:
 
-```arduino
+```cpp
 // this will work
 debug_msg("It works!");
 
@@ -106,7 +106,7 @@ loop printing becomes problematic.
 
 > For example:
 
-```arduino
+```cpp
 int arr[5] = {1, 2, 3, 4, 5};
 
 // the following will always show 'arr[i] =='
