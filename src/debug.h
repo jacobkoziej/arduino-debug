@@ -65,20 +65,16 @@
 #ifdef NDEBUG
 #define debug_msg(X)
 #elif defined DEBUG_PRINT_FILE
-#define debug_msg(X) if ((X)) {\
-	Serial.print(F("[MSG] "));\
+#define debug_msg(X) Serial.print(F("[MSG] "));\
 	Serial.print(F(__FILE__":"));\
 	Serial.print(__LINE__);\
 	Serial.print(F(": "));\
-	Serial.println(F(X));\
-	}
+	Serial.println(F(X));
 #else
-#define debug_msg(X) if ((X)) {\
-	Serial.print(F("[MSG] "));\
+#define debug_msg(X) Serial.print(F("[MSG] "));\
 	Serial.print(__LINE__);\
 	Serial.print(F(": "));\
-	Serial.println(F(X));\
-	}
+	Serial.println(F(X));
 #endif
 
 #ifdef NDEBUG
