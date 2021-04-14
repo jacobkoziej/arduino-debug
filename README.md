@@ -83,5 +83,5 @@ Distributed under the [LGPLv3]
 
 [`Serial.print()`]: https://www.arduino.cc/reference/en/language/functions/communication/serial/print/
 [`F()`]: https://www.arduino.cc/reference/en/language/variables/utilities/progmem/
-[LGPL]: LICENSE.md
+[LGPLv3]: LICENSE.md
 [Zed A. Shaw's Awesome Debug Macros]: https://github.com/zedshaw/learn-c-the-hard-way-lectures/blob/master/dbg.h
