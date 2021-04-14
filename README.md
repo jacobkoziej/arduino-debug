@@ -15,6 +15,56 @@ debugging?
 * Toggle to enable filename printing in debug output for multi-file programs.
 
 
+## Sample
+
+> Program:
+
+```arduino
+#include <debug.h>
+
+
+void setup()
+{
+	Serial.begin(9600);
+
+	float pi      = 3.141592;
+	byte  pattern = 123;
+	char  *msg    = "Hello World!";
+	bool  state   = false;
+
+	debug_bin_info();
+	debug_val(pi, 6);
+	debug_val(pattern, HEX);
+	debug_val(msg);
+	debug_msg("I'm just here for show");
+	debug_warn(pattern == 123);
+	debug_assert(pattern == 99);
+	debug_val(state);
+}
+
+void loop()
+{
+	debug_msg("Begin counting to a million");
+	for (long i = 0; i < 1000000L; i++) {
+		Serial.println(i);
+		delay(1000);
+	}
+}
+```
+
+> Output:
+
+```
+[BIN INFO] Apr 13 2021 - 23:12:19
+[VAL] 14: pi == 3.141592
+[VAL] 15: pattern == 7B
+[VAL] 16: msg == Hello World!
+[MSG] 17: I'm just here for show
+[WARN] 18: pattern == 123
+[ASSERT FAILED] 19: pattern == 99
+```
+
+
 ## Usage
 
 To start using the library, `#include <debug.h>` at the top of your program.
